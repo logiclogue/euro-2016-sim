@@ -1,13 +1,15 @@
-var sim = require('football-score-sim');
-var Match = sim.Match;
-var Team = sim.Team;
+var League = require('./js/League');
+var getTeam = require('./js/getTeam');
 
-var groupA = new Group([france, romania, albania, switzerland]);
-var groupB = new Group([wales, slovakia, england, russia]);
-var groupC = new Group([poland, northernIreland, germany, ukraine]);
-var groupD = new Group([turkey, croatia, spain, czechRepublic]);
-var groupE = new Group([republicOfIreland, sweden, belgium, italy]);
-var groupF = new Group([austria, hungary, portugal, iceland]);
+
+console.log(getTeam('France'));
+
+var groupA = new League([getTeam('France'), getTeam('Romania'), getTeam('Albania'), getTeam('Switzerland')]);
+var groupb = new League([getTeam('wales'), getTeam('Slovakia'), getTeam('England'), getTeam('Russia')]);
+var groupC = new League([getTeam('Poland'), getTeam('Northern Ireland'), getTeam('Germany'), getTeam('Ukraine')]);
+var groupD = new League([getTeam('Turkey'), getTeam('Croatia'), getTeam('Spain'), getTeam('Czech Republic')]);
+var groupE = new League([getTeam('Republic Of Ireland'), getTeam('Sweden'), getTeam('Belgium'), getTeam('Italy')]);
+var groupF = new League([getTeam('Austria'), getTeam('Hungary'), getTeam('Portugal'), getTeam('Iceland')]);
 
 
 console.log(Match);

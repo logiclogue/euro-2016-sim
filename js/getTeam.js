@@ -7,5 +7,7 @@ var teams = require('../res/teams.json');
  * the json file and create a team object.
  */
 module.exports = function (teamName) {
-    var data = teams[teamName];
+    var rating = teams[teamName];
+
+    return new Team(teamName, rating);
 }
