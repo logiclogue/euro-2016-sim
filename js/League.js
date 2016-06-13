@@ -30,7 +30,7 @@ function League(teams, options) {
      */
     proto_.simulate = function () {
         this.matches.forEach(function (match) {
-            var result = match.result();
+            var result = match.simulate();
             var teamA = this.teams[this.teams.indexOf(match.team[0])];
             var teamB = this.teams[this.teams.indexOf(match.team[1])];
 

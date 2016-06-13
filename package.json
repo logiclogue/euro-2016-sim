@@ -9,7 +9,7 @@
   "author": "Jordan Lord",
   "license": "ISC",
   "dependencies": {
-    "football-score-sim": "^1.1.0",
+    "football-score-sim": "^1.1.2",
     "table": "^3.7.8"
   }
 }
