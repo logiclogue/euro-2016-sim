@@ -4,21 +4,23 @@ var table = require('table').default;
 
 /*
  * Creates a league. Can simulate all the games.
+ *
+ * options {
+ *  resetPoints: true
+ * }
  */
-function League(teams) {
+function League(teams, options) {
+    options = options || {
+        resetPoints: true
+    };
+
     this.teams = teams || [];
     this.matches = [];
 
-    this.teams.forEach(function (team) {
-        team.points = 0;
-        team.played = 0;
-        team.wins = 0;
-        team.draws = 0;
-        team.loses = 0;
-        team.goalsFor = 0;
-        team.goalsAgainst = 0;
-    });
-
+    if (options.resetPoints) {
+        this.resetPoints();
+    }
+    
     this._generateFixtureList();
 }
 
@@ -106,6 +108,21 @@ function League(teams) {
         });
 
         return table(body);
+    };
+
+    /*
+     * Resets each team's points.
+     */
+    proto_.resetPoints = function () {
+        this.teams.forEach(function (team) {
+            team.points = 0;
+            team.played = 0;
+            team.wins = 0;
+            team.draws = 0;
+            team.loses = 0;
+            team.goalsFor = 0;
+            team.goalsAgainst = 0;
+        });
     };
 
 
