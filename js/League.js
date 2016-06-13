@@ -1,4 +1,5 @@
 var Match = require('football-score-sim').Match;
+var table = require('table').default;
 
 
 /*
@@ -78,6 +79,33 @@ function League(teams) {
 
             return teamA.points < teamB.points;
         });
+    };
+
+    /*
+     * Prints the league in a table.
+     */
+    proto_.print = function () {
+        var headings = ['#', 'Team', 'P', 'W', 'D', 'L', 'GF', 'GA', 'GD', 'Pts'];
+        var body = [headings];
+
+        this.teams.forEach(function (team, index) {
+            var row = [
+                index + 1,
+                team.stringName,
+                team.played,
+                team.wins,
+                team.draws,
+                team.loses,
+                team.goalsFor,
+                team.goalsAgainst,
+                team.goalsFor - team.goalsAgainst,
+                team.points
+            ];
+
+            body.push(row);
+        });
+
+        return table(body);
     };
 
 

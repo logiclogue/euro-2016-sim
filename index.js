@@ -1,5 +1,6 @@
 var League = require('./js/League');
 var getTeam = require('./js/getTeam');
+var table = require('table').default;
 
 
 var groupA = new League([getTeam('France'), getTeam('Romania'), getTeam('Albania'), getTeam('Switzerland')]);
@@ -11,4 +12,4 @@ var groupF = new League([getTeam('Austria'), getTeam('Hungary'), getTeam('Portug
 
 groupB.simulate();
 groupB.sort();
-console.log(groupB.teams);
+console.log(groupB.print());
