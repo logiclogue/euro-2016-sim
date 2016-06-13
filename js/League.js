@@ -10,14 +10,12 @@ var table = require('table').default;
  * }
  */
 function League(teams, options) {
-    options = options || {
-        resetPoints: true
-    };
+    options = options || {};
 
     this.teams = teams || [];
     this.matches = [];
 
-    if (options.resetPoints) {
+    if (!(options.resetPoints === false)) {
         this.resetPoints();
     }
     
