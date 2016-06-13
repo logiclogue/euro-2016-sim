@@ -73,8 +73,21 @@ function League(teams, options) {
      */
     proto_.sort = function () {
         this.teams.sort(function (teamA, teamB) {
-            if (teamA.points === teamB.points) {
-                return teamA.goalsFor - teamA.goalsAgainst < teamB.goalsFor - teamB.goalsAgainst;
+            var goalDiffA = teamA.goalsFor - teamA.goalsAgainst;
+            var goalDiffB = teamB.goalsFor - teamB.goalsAgainst;
+            var equalPoints = teamA.points === teamB.points;
+            var equalGoalDiff = goalDiffA === goalDiffB;
+            var equalWins = teamA.wins === teamB.wins;
+            var equalGoalsFor = teamA.goalsFor === teamB.goalsFor;
+
+            if (equalPoints && equalGoalDiff && equalWins) {
+                return teamA.goalsFor < teamB.goalsFor;
+            }
+            else if (equalPoints && equalGoalDiff) {
+                return teamA.wins < teamB.wins;
+            }
+            else if (equalPoints) {
+                return goalDiffA < goalDiffB;
             }
 
             return teamA.points < teamB.points;
