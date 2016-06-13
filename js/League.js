@@ -15,7 +15,7 @@ function League(teams, options) {
     this.teams = teams || [];
     this.matches = [];
 
-    if (!(options.resetPoints === false)) {
+    if (options.resetPoints !== false) {
         this.resetPoints();
     }
     
