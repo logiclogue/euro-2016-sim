@@ -1,4 +1,5 @@
 var League = require('./js/League');
+var Match = require('./js/MatchKnockOut');
 var getTeam = require('./js/getTeam');
 var table = require('table').default;
 
@@ -6,6 +7,7 @@ var table = require('table').default;
 var groups = [];
 var thirdPlaceGroup;
 var thirdPlaceTeams = [];
+var last16 = [];
 
 
 groups[0] = new League([getTeam('France'), getTeam('Romania'), getTeam('Albania'), getTeam('Switzerland')]);
@@ -28,3 +30,9 @@ thirdPlaceGroup = new League(thirdPlaceTeams, {
 });
 thirdPlaceGroup.sort();
 console.log(thirdPlaceGroup.print());
+
+last16[0] = new Match(groups[0].teams[0], groups[2].teams[1]);
+
+last16.forEach(function (match) {
+    console.log(match.result().text);
+});
