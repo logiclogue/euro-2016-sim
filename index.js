@@ -1,5 +1,6 @@
 var League = require('./js/League');
 var Match = require('./js/MatchKnockOut');
+var KnockOut = require('./js/KnockOut');
 var getTeam = require('./js/getTeam');
 var table = require('table').default;
 
@@ -36,7 +37,6 @@ last16();
 quarterFinals();
 semiFinals();
 finalMatch();
-
 
 
 

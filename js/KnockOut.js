@@ -1,3 +1,6 @@
+var Match = require('./MatchKnockOut');
+
+
 function KnockOut(teams) {
     this.rounds = [];
     this.matches = [];
@@ -35,7 +38,17 @@ function KnockOut(teams) {
      * Generate matches.
      */
     proto_._generateMatches = function () {
+        var i;
+        var max;
+        var teamA;
+        var teamB;
 
+        for (i = 0, max = this.teams.length; i < max; i += 2) {
+            teamA = this.teams[i];
+            teamB = this.teams[i + 1];
+
+            matches.push(new Match(teamA, teamB));
+        }
     };
 
 }(KnockOut, KnockOut.prototype));
