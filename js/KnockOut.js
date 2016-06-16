@@ -1,4 +1,4 @@
-var Match = require('./MatchKnockOut');
+var Match = require('football-score-sim').Match;
 
 
 function KnockOut(teams) {
@@ -47,7 +47,10 @@ function KnockOut(teams) {
             teamA = this.teams[i];
             teamB = this.teams[i + 1];
 
-            matches.push(new Match(teamA, teamB));
+            this.matches.push(new Match(teamA, teamB, {
+                penalties: true,
+                extraTime: true
+            }));
         }
     };
 

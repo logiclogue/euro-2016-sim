@@ -39,6 +39,8 @@ semiFinals();
 finalMatch();
 
 
+console.log(new KnockOut([getTeam('England'), getTeam('Wales')]));
+
 
 function groupStage() {
     groups.forEach(function (group) {
