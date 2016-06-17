@@ -50,12 +50,18 @@ console.log(knockOut.teams);
 
 function groupStage() {
     groups.forEach(function (group) {
+        // Simulate all the matches in the group.
         group.simulate();
+        // Sort the group.
         group.sort();
+        // Print the group table.
         console.log(group.print());
 
+        // Teams that finish 3rd get put into the 3rd
+        // place ranking group.
         thirdPlaceTeams.push(group.teams[2]);
 
+        // For every match print the results.
         group.matches.forEach(function (match) {
             console.log(match.text);
         });
