@@ -62,6 +62,8 @@ function KnockOut(teams) {
         var teamA;
         var teamB;
 
+        this.matches = [];
+
         if (max % 2 === 1) {
             return false;
         }
