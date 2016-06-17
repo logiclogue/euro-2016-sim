@@ -23,6 +23,7 @@ function Euro() {
         this.groupACD;
         this.groupABF;
         this.groupCDE;
+        this.winner;
     };
 
     proto_._createGroups = function () {
@@ -119,7 +120,7 @@ function Euro() {
             console.log('\n');
         }
 
-        console.log(knockOut.teams[0].stringName);
+        this.winner = knockOut.teams[0];
     };
 
 }(Euro, Euro.prototype));
