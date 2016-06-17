@@ -14,14 +14,22 @@ function KnockOut(teams) {
     /*
      * Simulates the whole round.
      */
-    proto_.simulateRound = function () {
-        
+    proto_.simulateRound = function (callback) {
+        callback = callback || function () {};
+
+        this.matches.forEach(function (match) {
+            match.simulate();
+            callback(match);
+        });
+
+        this._roundComplete();
+        this._generateMatches();
     };
 
     /*
      * Simulates the next match.
      */
-    proto_.simulateMatch = function () {
+    proto_.simulateNextMatch = function () {
         
     };
 
@@ -35,15 +43,30 @@ function KnockOut(teams) {
     };
 
     /*
+     *
+     */
+    proto_._roundComplete = function () {
+        this.teams = [];
+
+        this.matches.forEach(function (match) {
+            this.teams.push(match.winner);
+        }.bind(this));
+    }
+
+    /*
      * Generate matches.
      */
     proto_._generateMatches = function () {
         var i;
-        var max;
+        var max = this.teams.length;
         var teamA;
         var teamB;
 
-        for (i = 0, max = this.teams.length; i < max; i += 2) {
+        if (max % 2 === 1) {
+            return false;
+        }
+
+        for (i = 0; i < max; i += 2) {
             teamA = this.teams[i];
             teamB = this.teams[i + 1];
 
@@ -52,6 +75,8 @@ function KnockOut(teams) {
                 extraTime: true
             }));
         }
+
+        this.rounds.push(this.matches);
     };
 
 }(KnockOut, KnockOut.prototype));

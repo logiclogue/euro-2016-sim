@@ -39,7 +39,13 @@ semiFinals();
 finalMatch();
 
 
-console.log(new KnockOut([getTeam('England'), getTeam('Wales')]));
+var knockOut = new KnockOut([getTeam('England'), getTeam('Wales')]);
+
+knockOut.simulateRound(function (match) {
+    console.log(match.text);
+});
+
+console.log(knockOut.teams);
 
 
 function groupStage() {
